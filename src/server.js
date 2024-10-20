@@ -8,7 +8,7 @@ app.use(express())
 app.use(express.json())
 app.use(cors())
 
-if (process.env.NODE_ENV === 'production') app.use('/', require('./routes'))
+if (process.env.NODE_ENV === 'production') app.use('/api', require('./routes'))
 else app.use('/api', require('./routes'))
 
 console.log('DB_HOST : ' + process.env.DB_HOST)
