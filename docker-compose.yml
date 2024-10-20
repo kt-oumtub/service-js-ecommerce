@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - app-network
+
+  service-js-ecommerce:
+    container_name: service-js-ecommerce
+    image: service-js-ecommerce:latest
+    ports:
+      - 9000:9000
+    environment:
+      PORT: '9000'
+      NODE_ENV: production
+      DB_NAME: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: '1234'
+      DB_HOST: localhost
+      DB_PORT: '5432'
+      DB_DIALECT: postgres
+      JWT_EXPIRE: '60'
+      JWT_KEY: '1234'
+      JWT_RENEW_KEY: 1234ReNew
+      TZ: Asia/Bangkok
+
+  #   volumes:
+  #     - .:/usr/src/app
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
