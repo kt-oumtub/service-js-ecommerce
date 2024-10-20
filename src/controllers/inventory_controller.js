@@ -6,11 +6,12 @@ const mInventoryRepo = require('../repository/m_inventory_repo.js')
 
 module.exports.inquiryInventory = async (req, res) => {
   try {
-    let { search, page_no, page_size, sort = 'inventory_code' } = req.query
+    let { search, inventory_code, page_no, page_size, sort = 'inventory_code' } = req.query
     let condition = ``
     let bind = {}
     let pagination = ``
 
+    if (inventory_code) (condition += `and a.inventory_code = $inventory_code\n`), (bind.inventory_code = inventory_code)
     if (search) {
       condition += `and (a.inventory_name_th ilike $search or a.inventory_name_en ilike $search)\n`
       bind.search = '%' + search + '%'

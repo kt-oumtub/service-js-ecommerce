@@ -17,30 +17,37 @@ module.exports.cartSchema = {
         errorMessage: 'should be use Int type or required!',
       },
     },
-    inventory_code: {
+    product_inventory_id: {
       in: ['body'],
       optional: false,
-      isString: {
-        errorMessage: 'should be use String type or required!',
+      isInt: {
+        errorMessage: 'should be use Int type or required!',
       },
-      isLength: {
-        errorMessage: 'no more than 20 characters',
-        options: { max: 20 },
-      },
-      trim: true,
     },
-    product_code: {
-      in: ['body'],
-      optional: false,
-      isString: {
-        errorMessage: 'should be use String type or required!',
-      },
-      isLength: {
-        errorMessage: 'no more than 20 characters',
-        options: { max: 20 },
-      },
-      trim: true,
-    },
+    // inventory_code: {
+    //   in: ['body'],
+    //   optional: false,
+    //   isString: {
+    //     errorMessage: 'should be use String type or required!',
+    //   },
+    //   isLength: {
+    //     errorMessage: 'no more than 20 characters',
+    //     options: { max: 20 },
+    //   },
+    //   trim: true,
+    // },
+    // product_code: {
+    //   in: ['body'],
+    //   optional: false,
+    //   isString: {
+    //     errorMessage: 'should be use String type or required!',
+    //   },
+    //   isLength: {
+    //     errorMessage: 'no more than 20 characters',
+    //     options: { max: 20 },
+    //   },
+    //   trim: true,
+    // },
     product_quantity: {
       in: ['body'],
       optional: false,
@@ -82,36 +89,36 @@ module.exports.cartSchema = {
         errorMessage: 'should be use Int type or required!',
       },
     },
-    user_id: {
+    // inventory_code: {
+    //   in: ['body'],
+    //   optional: false,
+    //   isString: {
+    //     errorMessage: 'should be use String type or required!',
+    //   },
+    //   isLength: {
+    //     errorMessage: 'no more than 20 characters',
+    //     options: { max: 20 },
+    //   },
+    //   trim: true,
+    // },
+    // product_code: {
+    //   in: ['body'],
+    //   optional: false,
+    //   isString: {
+    //     errorMessage: 'should be use String type or required!',
+    //   },
+    //   isLength: {
+    //     errorMessage: 'no more than 20 characters',
+    //     options: { max: 20 },
+    //   },
+    //   trim: true,
+    // },
+    product_inventory_id: {
       in: ['body'],
       optional: false,
       isInt: {
         errorMessage: 'should be use Int type or required!',
       },
-    },
-    inventory_code: {
-      in: ['body'],
-      optional: false,
-      isString: {
-        errorMessage: 'should be use String type or required!',
-      },
-      isLength: {
-        errorMessage: 'no more than 20 characters',
-        options: { max: 20 },
-      },
-      trim: true,
-    },
-    product_code: {
-      in: ['body'],
-      optional: false,
-      isString: {
-        errorMessage: 'should be use String type or required!',
-      },
-      isLength: {
-        errorMessage: 'no more than 20 characters',
-        options: { max: 20 },
-      },
-      trim: true,
     },
     product_quantity: {
       in: ['body'],

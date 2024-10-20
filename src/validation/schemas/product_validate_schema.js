@@ -22,8 +22,8 @@ module.exports.productSchema = {
     price: {
       in: ['query'],
       optional: true,
-      isDecimal: {
-        errorMessage: 'should be use Decimal type or required!',
+      isNumeric: {
+        errorMessage: 'should be use Numeric type or required!',
       },
     },
     page_no: {

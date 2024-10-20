@@ -7,8 +7,8 @@ module.exports.inquiryInventory = async ({ condition, bind, pagination }) => {
     select a.* ,
     (	select coalesce(json_agg(item),'[]'::json)
       from (
-        select b.product_code ,c.product_name_th ,c.product_name_en ,c.price ,c.product_detail ,
-        b.product_amount
+        select b.product_inventory_id ,b.product_code ,c.product_name_th ,c.product_name_en ,
+        c.price ,c.product_detail ,b.product_amount
         from ecommerce.t_product_inventory b
         left join ecommerce.m_product c
           on b.product_code = c.product_code
@@ -47,8 +47,8 @@ module.exports.getInventoryById = async ({ inventory_id }) => {
     select a.* ,
     (	select coalesce(json_agg(item),'[]'::json)
       from (
-        select b.product_code ,c.product_name_th ,c.product_name_en ,c.price ,c.product_detail ,
-        b.product_amount
+        select b.product_inventory_id ,b.product_code ,c.product_name_th ,c.product_name_en ,
+        c.price ,c.product_detail ,b.product_amount
         from ecommerce.t_product_inventory b
         left join ecommerce.m_product c
           on b.product_code = c.product_code

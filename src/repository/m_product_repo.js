@@ -67,6 +67,7 @@ module.exports.updateMProduct = async ({ updateSet, updateWhere }, transaction) 
     let result = await m_product.update(updateSet, {
       where: updateWhere,
       returning: true,
+      plain: true,
       transaction,
     })
 

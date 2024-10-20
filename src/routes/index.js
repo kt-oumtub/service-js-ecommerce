@@ -12,6 +12,7 @@ router.use('/product-inventory', require('./product_inventory_route.js'))
 
 //* Manage Cart and User Order
 router.use('/cart', require('./cart_route.js'))
-// router.use('/order', require('./order_route.js'))
+router.use('/order', require('./order_route.js'))
+router.use('/order-history', require('./order_history_route.js'))
 
 module.exports = router

@@ -1,6 +1,29 @@
 const { t_cart, sequelize } = require('../models')
 const { QueryTypes, Op, fn, col } = require('sequelize')
 
+module.exports.getCartDetailForOrdered = async ({ condition, bind }) => {
+  try {
+    let query = `
+    select 
+    a.user_id ,a.cart_id ,
+    a.inventory_code ,a.product_code ,a.product_quantity as total_amount ,
+    b.price as product_price ,
+    cast(a.product_quantity * b.price as numeric) as total_price ,
+    now() as order_date
+    from ecommerce.t_cart a
+    left join ecommerce.m_product b on a.product_code = b.product_code
+    where 1 = 1
+    ${condition}
+    order by a.product_code
+    `
+
+    const result = await sequelize.query(query, { bind, type: QueryTypes.SELECT, plain: true })
+    return result
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports.getCartDetailByUserId = async ({ user_id }) => {
   try {
     let query = `

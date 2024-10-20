@@ -7,6 +7,18 @@ module.exports.inventorySchema = {
         errorMessage: 'should be use String type or required!',
       },
     },
+    inventory_code: {
+      in: ['query'],
+      optional: true,
+      isString: {
+        errorMessage: 'should be use String type or required!',
+      },
+      isLength: {
+        errorMessage: 'no more than 20 characters',
+        options: { max: 20 },
+      },
+      trim: true,
+    },
     page_no: {
       in: ['query'],
       optional: true,
